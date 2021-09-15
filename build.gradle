@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'info.puneetsharma'
+group 'ps.tryable'
 version '1.0-SNAPSHOT'
 
 repositories {

@@ -1,6 +1,6 @@
-package info.puneetsharma.graceful.trycatch;
+package ps.tryable.graceful.trycatch;
 
-import info.puneetsharma.function.ThrowingFunction;
+import ps.tryable.function.ThrowingFunction;
 
 import java.util.function.Function;
 
