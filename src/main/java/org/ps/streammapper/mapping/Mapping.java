@@ -6,8 +6,8 @@ import java.util.function.Function;
 
 public class Mapping<E, R> {
 
-    private E failure;
-    private R success;
+    private final E failure;
+    private final R success;
 
     public Mapping(
             E failure,
