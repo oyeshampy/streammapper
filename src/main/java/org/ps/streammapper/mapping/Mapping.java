@@ -1,15 +1,15 @@
-package ps.tryable.graceful.trycatch;
+package org.ps.streammapper.mapping;
 
-import ps.tryable.function.ThrowingFunction;
+import org.ps.streammapper.function.ThrowingFunction;
 
 import java.util.function.Function;
 
-public class Try<E, R> {
+public class Mapping<E, R> {
 
     private E failure;
     private R success;
 
-    public Try(
+    public Mapping(
             E failure,
             R success
     ) {
@@ -17,12 +17,12 @@ public class Try<E, R> {
         this.success = success;
     }
 
-    public static <T, R, E extends Exception> Function<T, Try<E, R>> of(ThrowingFunction<T, R, E> function) {
+    public static <T, R, E extends Exception> Function<T, Mapping<E, R>> of(ThrowingFunction<T, R, E> function) {
         return t -> {
             try {
-                return new Try<>(null, function.apply(t));
+                return new Mapping<>(null, function.apply(t));
             } catch (Exception e) {
-                return new Try<>((E) e, null);
+                return new Mapping<>((E) e, null);
             }
         };
     }
