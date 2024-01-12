@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
@@ -17,5 +18,23 @@ tasks.named('jar') {
     manifest {
         attributes('Implementation-Title': project.name,
                 'Implementation-Version': project.version)
+    }
+}
+
+publishing {
+    publications {
+        streammapper(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages" //  optional target repository name
+            url = "https://maven.pkg.github.com/oyeshampy/streammapper"
+            credentials {
+                username = 'USERNAME'
+                password = 'TOKEN'
+            }
+        }
     }
 }
