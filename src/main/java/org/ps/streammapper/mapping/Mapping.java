@@ -4,6 +4,9 @@ import org.ps.streammapper.function.ThrowingFunction;
 
 import java.util.function.Function;
 
+/**
+ * @author Puneet Sharma
+ */
 public class Mapping<E, R> {
 
     private final E failure;
