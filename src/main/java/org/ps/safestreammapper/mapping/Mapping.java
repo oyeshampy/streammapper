@@ -1,6 +1,6 @@
-package org.ps.streammapper.mapping;
+package org.ps.safestreammapper.mapping;
 
-import org.ps.streammapper.function.ThrowingFunction;
+import org.ps.safestreammapper.function.ThrowingFunction;
 
 import java.util.function.Function;
 
