@@ -1,4 +1,4 @@
-package org.ps.streammapper.function;
+package org.ps.safestreammapper.function;
 
 /**
  * Represents a function that accepts one argument. It can produce a result or throw an exception.

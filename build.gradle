@@ -23,14 +23,14 @@ tasks.named('jar') {
 
 publishing {
     publications {
-        streammapper(MavenPublication) {
+        safestreammapper(MavenPublication) {
             from components.java
         }
     }
     repositories {
         maven {
             name = "GitHubPackages" //  optional target repository name
-            url = "https://maven.pkg.github.com/oyeshampy/streammapper"
+            url = "https://maven.pkg.github.com/oyeshampy/safe-stream-mapper"
             credentials {
                 username = 'USERNAME'
                 password = 'TOKEN'
