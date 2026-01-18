@@ -17,11 +17,25 @@ while keeping the successes and failures visible and easy to inspect.
 
 ```java
 import org.ps.streammapper.mapping.Mapping;
+import org.ps.streammapper.mapping.MappingCollectors;
 import org.ps.streammapper.function.ThrowingFunction;
+
+import java.util.stream.Collectors;
 
 List<Mapping<Exception, Integer>> result = inputs.stream()
     .map(Mapping.of((String s) -> Integer.parseInt(s)))
-    .toList();
+    .collect(Collectors.toList());
+```
+
+```java
+Mapping<Exception, Integer> safeValue = Mapping.<Exception, Integer>failure(new Exception("boom"))
+    .recover(ex -> 0)
+    .map(value -> value + 1);
+```
+
+```java
+List<Integer> successes = result.stream().collect(MappingCollectors.successes());
+List<Exception> failures = result.stream().collect(MappingCollectors.failures());
 ```
 
 ## API
@@ -30,5 +44,8 @@ List<Mapping<Exception, Integer>> result = inputs.stream()
   allows checked exceptions.
 - `Mapping.of(ThrowingFunction)`: turns a throwing function into a safe mapper
   for streams.
+- `Mapping.map`, `flatMap`, `recover`, `recoverWith` for chaining and recovery.
+- `Mapping.toOptional`, `orElse`, `orElseGet` for value extraction.
+- `MappingCollectors.successes()` / `failures()` for extracting lists from a stream.
 - `Mapping.getSuccess()`, `Mapping.getFailure()`, `isSuccess()`, `isFailure()`
   for downstream handling.
